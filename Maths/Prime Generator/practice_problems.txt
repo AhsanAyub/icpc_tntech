@@ -1,0 +1,6 @@
+Practice problems relating to prime numbers
+
+http://codeforces.com/contest/26/problem/A
+http://codeforces.com/contest/776/problem/B
+https://codeforces.com/problemset/problem/17/A
+https://codeforces.com/problemset/problem/154/B

@@ -1,2 +1,3 @@
-# icpc_tntech
-This repository covers all the materials related the ICPC team of Tennessee Tech University.
+### ICPC Materials for Tennessee Tech University
+
+This repository is created to put all the contents covered during the practice sessions and contests.
