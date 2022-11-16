@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
     stringstream iss;
     vector<int> nums;
 
-    iss.str(argv[1]);
+    iss.str(argv[argc - 1]);
 
     if((iss >> k).fail()){
         cerr << "Arguments should be integers.\n";
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 
     for(int i = 1; i < argc - 1; ++i){
         iss.clear();
-        iss.str(argv[i + 1]);
+        iss.str(argv[i]);
 
         if((iss >> m).fail()){
             cerr << "Arguments should be integers.\n";
