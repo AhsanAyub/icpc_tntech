@@ -3,32 +3,22 @@ using namespace std;
 
 class Solution {
 public:
-    static vector<int> topKFrequent(vector<int>& nums, int k) {
-        map<int, int> mp;
-        multimap<int, int> mlmp;
+    static vector<int> twoSum(vector<int>& numbers, int target) {
+        int i = 0;
+        int j = numbers.size() - 1;
         
-        for(auto i : nums){
-            if(mp.find(i) != mp.end()){
-                mp[i]++;
+        while(numbers[i] + numbers[j] != target){
+            int temp = target - numbers[i];
+            
+            if(temp > numbers[j]){
+                ++i;
             }
             else{
-                mp[i] = 1;
+                --j;
             }
         }
-        
-        for(auto i : mp){
-            mlmp.insert({i.second, i.first});
-        }
-        
-        int count = 0;
-        vector<int> ans;
-        
-        for(auto it = mlmp.rbegin(); it != mlmp.rend() && count != k; ++it){
-            ans.push_back(it->second);
-            count++;
-        }
-        
-        return ans;
+              
+        return {i + 1, j + 1};
     }
 };
 
@@ -38,13 +28,14 @@ int main(int argc, char* argv[]){
         return -1;
     }
 
-    int m, k;
+    int target;
+    int m;
     stringstream iss;
     vector<int> nums;
 
     iss.str(argv[argc - 1]);
 
-    if((iss >> k).fail()){
+    if((iss >> target).fail()){
         cerr << "Arguments should be integers.\n";
         return -1;
     }
@@ -61,12 +52,13 @@ int main(int argc, char* argv[]){
         nums.push_back(m);
     }
 
-    vector<int> ans = Solution::topKFrequent(nums, k);
+    vector<int> ans = Solution::twoSum(nums, target);
 
-    for (auto i : ans){
+    for(auto i : ans){
         cout << i << " ";
     }
-    cout << "\n";  
+
+    cout << "\n";
 
     return 0;
 }

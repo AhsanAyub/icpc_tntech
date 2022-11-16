@@ -24,9 +24,9 @@ int main(int argc, char* argv[]){
     stringstream iss;
     vector<int> nums;
 
-    for(int i = 0; i < argc - 1; ++i){
+    for(int i = 1; i < argc; ++i){
         iss.clear();
-        iss.str(argv[i + 1]);
+        iss.str(argv[i]);
 
         if((iss >> m).fail()){
             cerr << "Arguments should be integers.\n";

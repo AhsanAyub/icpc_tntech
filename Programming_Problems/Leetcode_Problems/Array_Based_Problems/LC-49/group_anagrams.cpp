@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
 
     vector<string> strs;
     
-    for(int i = 0; i < argc; ++i){
+    for(int i = 1; i < argc; ++i){
         string temp(argv[i]);
         strs.push_back(temp);
     }
@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
     
     vector<vector<string>> ans = Solution::groupAnagrams(strs);
 
-    for(int i = 1; i < ans.size(); ++i){
+    for(int i = 0; i < ans.size(); ++i){
         for(int j = 0; j < ans[i].size(); ++j){
             cout << ans[i][j] << " ";
         }

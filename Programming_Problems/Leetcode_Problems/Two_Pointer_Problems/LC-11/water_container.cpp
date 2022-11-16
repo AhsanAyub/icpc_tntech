@@ -3,21 +3,25 @@ using namespace std;
 
 class Solution {
 public:
-    static int findDuplicate(vector<int>& nums) {
-        set<int> s;
-        int length = nums.size();
+    static int maxArea(vector<int>& height) {
+        int i = 0;
+        int j = height.size() - 1;
         
-        for(int i = 0; i < length; ++i){
-            pair<set<int>::iterator, bool> it = s.insert(nums[i]);
-            
-            if(!it.second){
-                return nums[i];
+        for(int k = i + 1; k < j / 2; ++k){
+            if((k - i) < (height[k] - height[i])){
+                i = k;
             }
-            
-            s.insert(nums[i]);
         }
-        
-        return 0;
+               
+        for(int k = j - 1; k > (j - i) / 2; --k){
+            if((j - k) < (height[k] - height[j])){
+                j = k;
+            }
+        }
+
+        int m = min(height[i], height[j]);
+               
+        return m * m;
     }
 };
 
@@ -43,9 +47,7 @@ int main(int argc, char* argv[]){
         nums.push_back(m);
     }
 
-    int ans = Solution::findDuplicate(nums);
-
-    cout << ans << "\n";
+    cout << Solution::maxArea(nums) << "\n";
 
     return 0;
 }

@@ -3,18 +3,21 @@ using namespace std;
 
 class Solution {
 public:
-    static vector<int> findDisappearedNumbers(vector<int>& nums) {
-        int size = nums.size();
-        vector<int>ans, count(size+1, 0);
-        
-        for(int i : nums){
-            count[i]++;
+    static vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> ans (nums.size(), 0);
+        int left = 0, right = ans.size() - 1;
+
+        for(int k = nums.size() - 1; k >= 0; --k){
+            if(abs(nums[left]) > abs(nums[right])){
+                ans[k] = nums[left] * nums[left];
+                ++left;
+            } 
+            else{
+                ans[k] = nums[right] * nums[right];
+                --right;
+            }
         }
-        
-        for(int i = 1; i <= size; ++i){
-            if(!count[i]) ans.push_back(i);
-        }
-        
+
         return ans;
     }
 };
@@ -41,11 +44,12 @@ int main(int argc, char* argv[]){
         nums.push_back(m);
     }
 
-    vector<int> ans = Solution::findDisappearedNumbers(nums);
+    vector<int> ans = Solution::sortedSquares(nums);
 
     for(auto i : ans){
         cout << i << " ";
     }
+
     cout << "\n";
 
     return 0;
